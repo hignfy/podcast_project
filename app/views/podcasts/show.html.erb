@@ -1,0 +1,18 @@
+<!-- app/views/podcasts/show.html.erb -->
+<h1><%= @podcast.title %></h1>
+<p><%= @podcast.description %></p>
+<p><%= @podcast.transcript %></p>
+<p>Published on: <%= @podcast.published_at.strftime('%B %e, %Y') %></p>
+
+<div>
+  <% if @podcast.image.attached? %>
+    <%= image_tag @podcast.image, alt: 'Podcast Image' %>
+  <% end %>
+</div>
+
+<div>
+  <% if user_signed_in? && current_user == @podcast.user %>
+    <%= link_to 'Edit', edit_podcast_path(@podcast) %>
+    <%= link_to "Delete", podcast_path(@podcast), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+  <% end %>
+</div>
