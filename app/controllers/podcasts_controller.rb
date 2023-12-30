@@ -18,11 +18,12 @@ class PodcastsController < ApplicationController
 
   def create
     @podcast = current_user.podcasts.new(podcast_params)
+    @podcast.published_at = Time.zone.now
 
     if @podcast.save
       redirect_to @podcast, notice: 'Podcast was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -43,10 +44,11 @@ class PodcastsController < ApplicationController
   end
 
   def update
+    @podcast = Podcast.find(params[:id])
     if @podcast.update(podcast_params)
       redirect_to @podcast, notice: 'Podcast was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
