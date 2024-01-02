@@ -1,8 +1,19 @@
 <!-- app/views/podcasts/edit.html.erb -->
-<h1>Edit Podcast</h1>
 
+<!-- app/views/podcasts/edit.html.erb -->
 
-<%= render 'form', podcast: @podcast   %>
+<div class="center-container">
+  <div class="vertical-align">
+    <div class="edit-header">
+      <h1>Edit Podcast</h1>
+    </div>
 
+    <div class="edit-form">
+      <%= render 'form', podcast: @podcast %>
+    </div>
 
-<%= link_to 'Back to Podcast', @podcast %>
+    <div class="back-link">
+      <%= link_to 'Back to Podcast', @podcast %>
+    </div>
+  </div>
+</div>
