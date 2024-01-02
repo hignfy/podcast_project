@@ -1,0 +1,11 @@
+development:
+  cloud_name: "dqngtx8s4"
+  api_key: "328756966694627"
+  api_secret: "mtbWFxKz1u_9roZxmegvsQDHrrQ"
+  secure: true
+
+production:
+  cloud_name: "dqngtx8s4"
+  api_key: "328756966694627"
+  api_secret: "mtbWFxKz1u_9roZxmegvsQDHrrQ"
+  secure: true

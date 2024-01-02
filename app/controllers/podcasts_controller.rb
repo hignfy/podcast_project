@@ -5,11 +5,18 @@ class PodcastsController < ApplicationController
 
   def index
     @podcasts = Podcast.all
+
+    # Check for sorting parameter
+    if params[:sort] == 'newest'
+      @podcasts = @podcasts.order(created_at: :desc)
+    elsif params[:sort] == 'oldest'
+      @podcasts = @podcasts.order(created_at: :asc)
+    end
   end
 
   def show
     @podcast = Podcast.find(params[:id])
-    # Your logic for the podcast show action goes here
+    # @latest_podcasts = Podcast.order(created_at: :desc)
   end
 
   def new
@@ -46,7 +53,7 @@ class PodcastsController < ApplicationController
   def update
     @podcast = Podcast.find(params[:id])
     if @podcast.update(podcast_params)
-      redirect_to @podcast, notice: 'Podcast was successfully updated.'
+      redirect_to @podcast
     else
       render :edit, status: :unprocessable_entity
     end
@@ -59,7 +66,7 @@ class PodcastsController < ApplicationController
   end
 
   def podcast_params
-    params.require(:podcast).permit(:title, :description, :published_at, :transcript, :image)
+    params.require(:podcast).permit(:title, :description, :published_at, :transcript, :image, :external_link)
   end
 
 end

@@ -1,7 +1,15 @@
-<!-- app/views/podcasts/new.html.erb -->
+<div class="center-container">
+  <div class="vertical-align">
+    <div class="edit-header">
+      <h1>New Podcast</h1>
+    </div>
 
-<h1>New Podcast</h1>
+    <div class="edit-form">
+      <%= render 'form', podcast: @podcast %>
+    </div>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', podcasts_path %>
+    <div class="back-link">
+      <%= link_to 'Back', podcasts_path %>
+    </div>
+  </div>
+</div>

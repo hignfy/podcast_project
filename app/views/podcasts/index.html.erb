@@ -1,15 +1,31 @@
 <!-- app/views/podcasts/index.html.erb -->
-<h1>Podcasts</h1>
+<div class="container">
+  <h1>Podcasts</h1>
 
-<ul>
+  <div class="dropdown" style="margin-bottom: 20px;"> <!-- Add margin-bottom here -->
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+    Sort
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+    <li><%= link_to 'Newest First', podcasts_path(sort: 'newest'), class: 'dropdown-item' %></li>
+    <li><%= link_to 'Oldest First', podcasts_path(sort: 'oldest'), class: 'dropdown-item' %></li>
+  </ul>
+  </div>
+
+<div class="row">
   <% @podcasts.each do |podcast| %>
-    <li>
-      <%= link_to podcast.title, podcast_path(podcast) %>
-      <p><%= podcast.description %></p>
-    </li>
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to podcast.title, podcast_path(podcast) %></h5>
+          <p class="card-text"><%= podcast.description %></p>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
 
-<% if user_signed_in? %>
-  <%= link_to 'Create New Podcast', new_podcast_path %>
-<% end %>
+  <% if user_signed_in? %>
+    <%= link_to 'Create New Podcast', new_podcast_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>
