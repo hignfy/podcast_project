@@ -27,7 +27,7 @@
     <% end %>
   </div>
 
-  <% if user_signed_in? %>
+  <% if user_signed_in? && current_user.admin? %>
     <%= link_to 'Create New Podcast', new_podcast_path, class: 'btn btn-secondary' %>
   <% end %>
 </div>

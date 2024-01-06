@@ -4,4 +4,8 @@ class User < ApplicationRecord
   has_many :podcasts, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def admin?
+    admin
+  end
 end

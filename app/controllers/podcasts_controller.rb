@@ -21,10 +21,12 @@ class PodcastsController < ApplicationController
 
   def new
     @podcast = Podcast.new
+    authorize @podcast
   end
 
   def create
     @podcast = current_user.podcasts.new(podcast_params)
+    authorize @podcast
     @podcast.published_at = Time.zone.now
 
     if @podcast.save
@@ -66,7 +68,7 @@ class PodcastsController < ApplicationController
   end
 
   def podcast_params
-    params.require(:podcast).permit(:title, :description, :published_at, :transcript, :image, :external_link)
+    params.require(:podcast).permit(:title, :description, :published_at, :transcript, :image)
   end
 
 end
