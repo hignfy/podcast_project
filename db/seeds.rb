@@ -12,7 +12,8 @@
 user = User.create!(
   email: 'emma@viennability.com',
   password: 'Viennabilitypassword',
-  password_confirmation: 'Viennabilitypassword'
+  password_confirmation: 'Viennabilitypassword',
+  admin: true
 )
 
 Podcast.create!(
